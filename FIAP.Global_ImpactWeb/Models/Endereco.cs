@@ -22,7 +22,7 @@ namespace FIAP.Global_ImpactWeb.Models
 
         [Display(Name ="Estado")]
         public Estado Sigla { get; set; }
-
+        
     }
 
     public enum Estado

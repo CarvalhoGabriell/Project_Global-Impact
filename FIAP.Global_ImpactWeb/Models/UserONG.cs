@@ -33,6 +33,12 @@ namespace FIAP.Global_ImpactWeb.Models
         [Display(Name ="Data Cadastro"), DataType(DataType.Date)]
         public DateTime DtCadastro { get; set; }
 
+        // relacionamento N:1
         public ContaBancaria Conta { get; set; }
+
+        // relacionamento 1:1
+        public Endereco Endereco { get; set; }
+
+        public int EnderecoId { get; set; }
     }
 }

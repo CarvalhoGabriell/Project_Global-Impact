@@ -1,5 +1,6 @@
 ﻿using FIAP.Global_ImpactWeb.Models;
 using FIAP.Global_ImpactWeb.Persistencia;
+using FIAP.Global_ImpactWeb.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -11,24 +12,24 @@ namespace FIAP.Global_ImpactWeb.Controllers
 {
     public class ONGsController : Controller
     {
-        private SolutionContext _context;
+        private IONGRepository _ongRepository;
 
-        public ONGsController(SolutionContext context)
+        public ONGsController(IONGRepository ongRepository)
         {
-            _context = context;
+            _ongRepository = ongRepository;
         }
 
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string nomeBuscado)
         {
-            var busca = _context.Users.ToList();
+            var busca = _ongRepository.BuscarPor(str => str.Nome.Contains(nomeBuscado) || nomeBuscado == null);
             return View(busca);
         }
 
 
         [HttpGet]
-        public IActionResult Cadastrar(int id)
+        public IActionResult Cadastrar()
         {
             CarregarNomesBancos();
             return View();
@@ -38,8 +39,8 @@ namespace FIAP.Global_ImpactWeb.Controllers
         [HttpPost]
         public IActionResult Cadastrar(UserONG ong)
         {
-            _context.Users.Add(ong);
-            _context.SaveChanges();
+            _ongRepository.Cadastro(ong);
+            _ongRepository.SaveCommit();
             TempData["msg"] = "Cadastro realizado com sucesso!";
             return RedirectToAction("Cadastrar");
         }
@@ -49,14 +50,16 @@ namespace FIAP.Global_ImpactWeb.Controllers
         public IActionResult Editar(int id)
         {
             CarregarNomesBancos();
-            return View();
+            var ong = _ongRepository.BuscaPorId(id);
+            return View(ong);
         }
 
         [HttpPost]
         public IActionResult Editar(UserONG ong)
         {
-            _context.Users.Update(ong);
-            _context.SaveChanges();
+
+            _ongRepository.Atualizar(ong);
+            _ongRepository.SaveCommit();
             TempData["msg"] = "Edição realizado com sucesso!";
             return RedirectToAction("Index");
         }
@@ -64,11 +67,14 @@ namespace FIAP.Global_ImpactWeb.Controllers
         [HttpPost]
         public IActionResult Remover(int id)
         {
-           var ong =  _context.Users.Find(id);
-            _context.Users.Remove(ong);
+            _ongRepository.Deletar(id);
+            _ongRepository.SaveCommit();
             TempData["msg"] = "ONG Removida com sucesso!";
             return RedirectToAction("Index");
         }
+
+
+        // fazer o metodo para carregar a pagina de detalhes de cada ong
 
         public void CarregarNomesBancos()
         {
