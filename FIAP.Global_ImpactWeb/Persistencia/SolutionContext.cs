@@ -15,6 +15,7 @@ namespace FIAP.Global_ImpactWeb.Persistencia
 
         public DbSet<Endereco> Enderecos { get; set; }
 
+        public DbSet<Doacao> Doacoes { get; set; }
         public SolutionContext(DbContextOptions op): base(op) { }
     }
 }

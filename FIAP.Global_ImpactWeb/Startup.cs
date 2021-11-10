@@ -1,4 +1,5 @@
 using FIAP.Global_ImpactWeb.Persistencia;
+using FIAP.Global_ImpactWeb.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +30,8 @@ namespace FIAP.Global_ImpactWeb
             services.AddDbContext<SolutionContext>(option =>
                 option.UseSqlServer(Configuration.GetConnectionString("banco"))
                 );
+
+            services.AddScoped<IONGRepository, ONGRepository>();
 
         }
 

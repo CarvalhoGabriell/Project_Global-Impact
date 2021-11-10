@@ -1,0 +1,124 @@
+﻿@model List<UserONG>
+
+@{
+    ViewData["Title"] = "Listagem das ONG'S";
+}
+
+
+<div class="donate-background"></div>
+
+<mensage-sucess mensagem="@TempData["msg"]"></mensage-sucess>
+
+<div class="search-input">
+    <form>
+        <div class="mb-3 margin search-input-container">
+            <input type="text" class="form-control" placeholder="Pesquisar ONG..." name="nomeBuscado" id="nomeBuscado">
+
+            <input style="margin-left:1rem" type="submit" class="btn btn-primary" value="Pesquisar" />
+        </div>
+
+        <div class="search-input-subtitle">
+            <p>
+                Selecione alguma das ONGs registradas na nossa plataforma para
+                fazer a sua doação... ela pode salvar vidas
+            </p>
+        </div>
+    </form>
+</div>
+
+@foreach (var itens in Model)
+{
+
+
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col">
+        <div class="card">
+            <img src="~/img_home.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">@itens.Nome</h5>
+                <p class="card-text">@itens.Descricao</p>
+                <p> + 200 Doações</p>
+            </div>
+            <div class="align-content-lg-stretch" style="margin-bottom:0.5rem;margin-left:0.5rem">
+                <button  style="width:10rem" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Doar</button>
+                <a class="btn" asp-action="Detalhes" asp-route-id="@itens.CodigoId"  style="background-color: seagreen; width: 10rem">Detalhes</a>
+
+            </div>
+        </div>
+    </div>
+    
+</div>
+}
+    
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="modal-body">
+                <div class="ong-colums">
+                    <div class="ong-modal-header">
+                        <h4>DOA FÁCIL</h4>
+                        <div>
+                            <a href="#">www.emily_thalita_enchem_o_saco.com.br</a>
+                        </div>
+                        <p>CNPJ</p>
+                    </div>
+
+                    <div class="ong-modal-footer">
+                        <p class="ong-modal-description">
+                           
+                        </p>
+                        <div>
+                            <p class="bank-title">Banco do Bradesco</p>
+                            <div class="bank-data">
+                                <div>
+                                    <p>Agência</p>
+                                    <p>2334</p>
+                                </div>
+                                <div>
+                                    <p>Conta</p>
+                                    <p>2334-6</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ong-colums">
+                    <div>
+                        <img src="../../assests/login-image.jpg" alt="ONG Image" class="" />
+                    </div>
+                    <form class="row g-3 ong-form">
+                        <div class="col-auto">
+                            <label for="donatorCpf" class="form-label">CPF</label>
+                            <input type="number" class="form-control" id="donatorCpf">
+                        </div>
+                        <div class="col-auto">
+                            <label for="donatorName" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="donatorName">
+                        </div>
+                        <div class="col-auto">
+                            <label for="donatorEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="donatorEmail">
+                        </div>
+                        <div class="col-auto">
+                            <label for="donationValue" class="form-label">Valor</label>
+                            <input type="number" class="form-control" id="donationValue">
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-success">Confirmar doação</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- <div class="modal-footer">
+      <button type="button" class="btn btn-success">Save changes</button>
+    </div> -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+﻿@model UserONG
+
+
+@{
+    ViewData["Title"] = "Detalhes das ONG'S";
+}
+
+
+<h3>Nome ONG: @Model.Nome</h3>
+
+<h3>Endereço: @Model.Endereco.CEP</h3>
+
+<h3>CONTA BANCARIA: @Model.Conta.Agencia</h3>
+
+<h5>BANCO: @Model.Conta.NomeBanco</h5>

@@ -18,15 +18,16 @@ namespace FIAP.Global_ImpactWeb.Models
 
         public int Numero { get; set; }
 
-        public string Bairro { get; set; }
-
         [Display(Name ="Estado")]
         public Estado Sigla { get; set; }
-        
+
+        [Display(Name = "Seu CEP"), MaxLength(8)]
+        public string CEP { get; set; }
+
     }
 
     public enum Estado
     {
-        AC,AL,AP,AM,BA,CE,DF,ES,GO,MA,MT,MS,MMG,PA,PB,PR,PE,PI,RR,RO,RJ,RN,RS,SC,SP,SE,TO
+        AC,AL,AP,AM,BA,CE,DF,ES,GO,MA,MT,MS,MG,PA,PB,PR,PE,PI,RR,RO,RJ,RN,RS,SC,SP,SE,TO
     }
 }

@@ -1,5 +1,6 @@
 ﻿using FIAP.Global_ImpactWeb.Models;
 using FIAP.Global_ImpactWeb.Persistencia;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,13 +24,16 @@ namespace FIAP.Global_ImpactWeb.Repositories
 
         public UserONG BuscaPorId(int id)
         {
-            return _context.Users.Where(o => o.CodigoId == id).FirstOrDefault();
+            return _context.Users.Where(o => o.CodigoId == id)
+                .Include(f => f.Endereco)
+                .Include(f=>f.Conta)
+                .FirstOrDefault();
            
         }
 
         public IList<UserONG> BuscarPor(Expression<Func<UserONG, bool>> filtro)
         {
-            return _context.Users.Where(filtro).ToList();
+            return _context.Users.Where(filtro).Include(f=>f.Endereco).Include(f=>f.Conta).ToList();
         }
 
         public void Cadastro(UserONG ong)

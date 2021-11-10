@@ -1,0 +1,19 @@
+﻿@model UserONG
+
+@{
+    ViewData["Title"] = "Cadastro de ONG'S";
+}
+
+<div class="registration-background"></div>
+<h4 class="registration-title">Cadastrar ONG</h4>
+
+
+<mensage-sucess mensagem="@TempData["msg"]"></mensage-sucess>
+
+<div class="form-container margin">
+    <form asp-action="Cadastrar">
+        <partial name="_Form" />
+
+        <button type="submit" class="btn btn-lg btn-success" style="margin-left:60rem;width:150px">Cadastrar</button>
+    </form>
+</div>

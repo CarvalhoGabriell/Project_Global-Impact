@@ -1,0 +1,100 @@
+﻿@model List<UserONG>
+
+@{
+    ViewData["Title"] = "Listagem das ONG'S";
+}
+
+
+<div class="donate-background"></div>
+
+<mensage-sucess mensagem="@TempData["msg"]"></mensage-sucess>
+
+<div class="search-input">
+    <form>
+        <div class="mb-3 margin search-input-container">
+            <input type="text" class="form-control" placeholder="Pesquisar ONG..." name="nomeOng" id="nomeOng">
+
+            <input style="margin-left:1rem" type="submit" class="btn btn-primary" value="Pesquisar" />
+        </div>
+
+        <div class="search-input-subtitle">
+            <p>
+                Selecione alguma das ONGs registradas na nossa plataforma para
+                fazer a sua doação... ela pode salvar vidas
+            </p>
+        </div>
+    </form>
+</div>
+
+@if (Model.Count == 0)
+{
+   <mensage-sucess mensagem="Nenhuma ONG cadastrado atualmente" class="alert alert-warning"></mensage-sucess>
+}
+
+
+<table style="border-radius:10px" class="table table-striped table-dark">
+    <tr style="background-color:seagreen">
+        <th>ID</th>
+        <th>Data Cadastro</th>
+        <th>Nome ONG</th>
+        <th>CNPJ</th>
+        <th>Link</th>
+        <th>CEP</th>
+        <th>Logradouro</th>
+        <th>Estado</th>
+        <th>Remover</th>
+        <th>Editar</th>
+
+    </tr>
+
+    @foreach (var itens in Model)
+    {
+        <tr>
+            <td>@itens.CodigoId</td>
+            <td>@itens.DtCadastro.ToShortDateString()</td>
+            <td>@itens.Nome</td>
+            <td>@itens.CNPJ</td>
+            <td>@itens.LinkSite</td>
+            <td>@itens.Endereco.CEP</td>
+            <td>@itens.Endereco.Logradouro</td>
+            <td>@itens.Endereco.Sigla</td>
+            <td class="text-center">
+                <button onclick="idUser.value = @itens.CodigoId" type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modalDelete">Remover</button>
+            </td>
+            <td>
+                 <a class="btn btn-sm btn-primary" asp-action="editar" asp-route-id="@itens.CodigoId">Editar</a>
+            </td>
+                
+        </tr>
+    }
+
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:red">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmação Remover</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                Ops :( <br />
+                Deseja Mesmo Deletar essa ONG? <br />
+
+            </div>
+            <div class="modal-footer">
+                <form asp-action="Remover">
+                    <!-- O atributo "id deve ser o mesmo informado no metodo POST da action de remover"-->
+                    <input type="hidden" name="id" id="idUser" />
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger">Sim</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

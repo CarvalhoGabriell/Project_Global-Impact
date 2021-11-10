@@ -27,18 +27,23 @@ namespace FIAP.Global_ImpactWeb.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        [Display(Name ="lLink para o Site Oficial")]
+        [Display(Name ="Link para o Site Oficial"), DataType(DataType.Url)]
         public string LinkSite { get; set; }
 
         [Display(Name ="Data Cadastro"), DataType(DataType.Date)]
         public DateTime DtCadastro { get; set; }
 
-        // relacionamento N:1
+        // relacionamento 1:1
         public ContaBancaria Conta { get; set; }
+
+        public int ContaId { get; set; }
 
         // relacionamento 1:1
         public Endereco Endereco { get; set; }
 
         public int EnderecoId { get; set; }
+
+        // relacionamento 1:N
+        public virtual ICollection<UserONG> ONGs { get; set; }
     }
 }

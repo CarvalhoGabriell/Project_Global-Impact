@@ -29,6 +29,13 @@ namespace FIAP.Global_ImpactWeb.Controllers
 
 
         [HttpGet]
+        public IActionResult IndexAdmin(string nomeOng)
+        {
+            var ongs = _ongRepository.BuscarPor(str => str.Nome.Contains(nomeOng) || nomeOng == null);
+            return View(ongs);
+        }
+
+        [HttpGet]
         public IActionResult Cadastrar()
         {
             CarregarNomesBancos();
@@ -61,7 +68,7 @@ namespace FIAP.Global_ImpactWeb.Controllers
             _ongRepository.Atualizar(ong);
             _ongRepository.SaveCommit();
             TempData["msg"] = "Edição realizado com sucesso!";
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexAdmin");
         }
 
         [HttpPost]
@@ -70,11 +77,17 @@ namespace FIAP.Global_ImpactWeb.Controllers
             _ongRepository.Deletar(id);
             _ongRepository.SaveCommit();
             TempData["msg"] = "ONG Removida com sucesso!";
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexAdmin");
         }
 
-
+        
         // fazer o metodo para carregar a pagina de detalhes de cada ong
+        [HttpGet]
+        public IActionResult Detalhes(int id)
+        {
+            var ongs = _ongRepository.BuscaPorId(id);
+            return View(ongs);
+        }
 
         public void CarregarNomesBancos()
         {

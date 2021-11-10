@@ -1,0 +1,109 @@
+﻿@model UserONG
+
+
+<!-- ONG Data -->
+<p class="ong-data-subtitle">Informações da ONG</p>
+<div class="ong-data">
+    <div class="input-container" style="margin-left: 0;">
+        <!-- ONG Name -->
+        <div class="mb-3">
+            <label asp-for="Nome" class="form-label"></label>
+            <input asp-for="Nome" type="text" class="form-control" aria-describedby="textHelp" required>
+        </div>
+
+        <!-- Data Cadastro -->
+        <div class="mb-3">
+            <label asp-for="DtCadastro" class="form-label"></label>
+            <input asp-for="DtCadastro" class="form-control" aria-describedby="cnpjHelp" required>
+        </div>
+
+        <!-- CNPJ -->
+        <div class="mb-3">
+            <label asp-for="CNPJ" class="form-label"></label>
+            <input asp-for="CNPJ" class="form-control" aria-describedby="cnpjHelp" required>
+        </div>
+    </div>
+
+    <div class="input-container">
+        <!-- Email -->
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" class="form-control" pattern="^[a-z0-9_.]+@@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$" aria-describedby="emailHelp" required>
+        </div>
+        <!-- Site link -->
+        <div class="mb-3">
+            <label asp-for="LinkSite" class="form-label"></label>
+            <input type="text" asp-for="LinkSite" class="form-control" aria-describedby="cnpjHelp">
+        </div>
+        <!-- Photo -->
+        <div class="mb-3" >
+            <label class="form-label">Imagem de Ícone ONG</label>
+            <img src="~/restaurante.png" style="width:100px;border:solid;border-radius:30px;border-color:darkgray;padding:15px;margin-left:0.4rem"/>
+        </div>
+    </div>
+
+
+    <div class="input-container" style="margin-right: 0;">
+        <!-- ONG description -->
+        <div class="mb-3">
+            <label asp-for="Descricao" class="form-label"></label>
+            <textarea class="form-control" rows="8" cols="5" asp-for="Descricao" required></textarea>
+        </div>
+
+
+    </div>
+</div>
+
+<!-- ONG Bank Data -->
+<p class="ong-data-subtitle" style="margin-top: 20px;">Dados Bancários</p>
+<div class="ong-bank-data">
+    <!-- Bank -->
+    <div class="mb-3 input-container" style="margin-left: 0;">
+        <label asp-for="Conta.NomeBanco" class="form-label"></label>
+        <select asp-for="Conta.NomeBanco" class="form-control" asp-items="ViewBag.bancos">
+            <option>Selecione...</option>
+        </select>
+    </div>
+
+    <!-- Agency -->
+    <div class="mb-3 input-container">
+        <label asp-for="Conta.Agencia" class="form-label"></label>
+        <input type="number" asp-for="Conta.Agencia" class="form-control">
+    </div>
+
+    <div class="mb-3 input-container" style="margin-right: 0;">
+        <label asp-for="Conta.NumeroConta" class="form-label"></label>
+        <input type="number" asp-for="Conta.NumeroConta" class="form-control">
+    </div>
+</div>
+
+
+<!-- ONG Address Data -->
+<p class="ong-data-subtitle" style="margin-top: 20px;">Endereço</p>
+<div class="ong-bank-data">
+    <!-- Estados -->
+    <div class="mb-3 input-container" style="margin-left: 0;">
+        <label asp-for="Endereco.Sigla" class="form-label"></label>
+        <select asp-for="Endereco.Sigla" class="form-control" asp-items="@Html.GetEnumSelectList<Estado>()">
+            <option>Selecione o Estado</option>
+        </select>
+    </div>
+
+    <!-- endereço completo -->
+    <div class="mb-3 input-container">
+        <label asp-for="Endereco.Logradouro" class="form-label"></label>
+        <input asp-for="Endereco.Logradouro" class="form-control">
+    </div>
+
+    <div class="mb-3 input-container">
+        <label asp-for="Endereco.CEP" class="form-label"></label>
+        <input asp-for="Endereco.CEP" class="form-control">
+    </div>
+
+    <div class="mb-3 input-container" style="margin-right: 0;">
+        <label asp-for="Endereco.Numero" class="form-label"></label>
+        <input type="number" asp-for="Endereco.Numero" class="form-control">
+    </div>
+</div>
+
+

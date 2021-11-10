@@ -1,0 +1,19 @@
+﻿@model UserONG
+
+@{
+    ViewData["Title"] = "Atualizar de ONG'S";
+}
+
+<div class="registration-background"></div>
+<h4 class="registration-title">Atualizar ONG</h4>
+
+
+<div class="form-container margin">
+    <form asp-action="Editar">
+        <partial name="_Form" />
+
+        <input asp-for="CodigoId"/>
+
+        <button type="submit" class="btn btn-lg btn-success" style="margin-left:60rem;width:150px">Salvar</button>
+    </form>
+</div>

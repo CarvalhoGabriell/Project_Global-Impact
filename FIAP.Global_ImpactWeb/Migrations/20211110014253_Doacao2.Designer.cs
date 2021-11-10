@@ -4,14 +4,16 @@ using FIAP.Global_ImpactWeb.Persistencia;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FIAP.Global_ImpactWeb.Migrations
 {
     [DbContext(typeof(SolutionContext))]
-    partial class SolutionContextModelSnapshot : ModelSnapshot
+    [Migration("20211110014253_Doacao2")]
+    partial class Doacao2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -13,11 +13,11 @@ namespace FIAP.Global_ImpactWeb.Models
         [Display(Name ="Número da Conta")]
         public int NumeroConta { get; set; }
 
+        [Display(Name ="Agência")]
         public int Agencia { get; set; }
 
         [Display(Name = "Código do Banco")]
         public string NomeBanco { get; set; }
-
 
     }
 }

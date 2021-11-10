@@ -381,3 +381,9 @@ C:\Users\Gabriel\source\repos\FIAP.Global_ImpactWeb\FIAP.Global_ImpactWeb\obj\De
 C:\Users\Gabriel\source\repos\FIAP.Global_ImpactWeb\FIAP.Global_ImpactWeb\obj\Debug\netcoreapp3.1\FIAP.Global_ImpactWeb.dll
 C:\Users\Gabriel\source\repos\FIAP.Global_ImpactWeb\FIAP.Global_ImpactWeb\obj\Debug\netcoreapp3.1\FIAP.Global_ImpactWeb.pdb
 C:\Users\Gabriel\source\repos\FIAP.Global_ImpactWeb\FIAP.Global_ImpactWeb\obj\Debug\netcoreapp3.1\FIAP.Global_ImpactWeb.genruntimeconfig.cache
+C:\Users\Gabriel\source\repos\FIAP.Global_ImpactWeb\FIAP.Global_ImpactWeb\obj\Debug\netcoreapp3.1\Razor\Views\ONGs\Cadastrar.cshtml.g.cs
+C:\Users\Gabriel\source\repos\FIAP.Global_ImpactWeb\FIAP.Global_ImpactWeb\obj\Debug\netcoreapp3.1\Razor\Views\ONGs\Index.cshtml.g.cs
+C:\Users\Gabriel\source\repos\FIAP.Global_ImpactWeb\FIAP.Global_ImpactWeb\obj\Debug\netcoreapp3.1\Razor\Views\ONGs\_Form.cshtml.g.cs
+C:\Users\Gabriel\source\repos\FIAP.Global_ImpactWeb\FIAP.Global_ImpactWeb\obj\Debug\netcoreapp3.1\Razor\Views\ONGs\Editar.cshtml.g.cs
+C:\Users\Gabriel\source\repos\FIAP.Global_ImpactWeb\FIAP.Global_ImpactWeb\obj\Debug\netcoreapp3.1\Razor\Views\ONGs\IndexAdmin.cshtml.g.cs
+C:\Users\Gabriel\source\repos\FIAP.Global_ImpactWeb\FIAP.Global_ImpactWeb\obj\Debug\netcoreapp3.1\Razor\Views\ONGs\Detalhes.cshtml.g.cs
