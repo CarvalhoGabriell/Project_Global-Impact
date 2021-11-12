@@ -14,9 +14,12 @@ namespace FIAP.Global_ImpactWeb.Controllers
     {
         private IONGRepository _ongRepository;
 
+        //private IDoacaoRepository _doacaoRepository;
+
         public ONGsController(IONGRepository ongRepository)
         {
             _ongRepository = ongRepository;
+            // _doacaoRepository = doacaoRepository;
         }
 
 
@@ -86,6 +89,7 @@ namespace FIAP.Global_ImpactWeb.Controllers
         public IActionResult Detalhes(int id)
         {
             var ongs = _ongRepository.BuscaPorId(id);
+
             return View(ongs);
         }
 

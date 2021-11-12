@@ -1,0 +1,54 @@
+﻿@model Doacao
+
+@{
+    ViewData["Title"] = "Listagem das ONG'S";
+}
+
+<div style="margin-top:2rem;margin-bottom:5rem">
+    <strong class="text-uppercase text-center text-success" style="font-size:30px">Faça aqui sua Doação!</strong>
+
+</div>
+
+<mensage-sucess mensagem="@TempData["msg"]"></mensage-sucess>
+
+<form asp-action="Doar">
+
+    <input hidden asp-for="CodigoId"/>
+
+    <div class="row">
+        <div class="col-9" >
+            <div class="input-group mb-4">
+                <span class="input-group-text" >Nome</span>
+                <input class="form-control" placeholder="Digite seu Nome..." asp-for="NomeDoador">
+            </div>
+            <div class="input-group mb-4">
+                <span class="input-group-text" id="basic-addon1">CPF</span>
+                <input class="form-control" placeholder="Seu CPF" asp-for="CPF">
+            </div>
+            <div class="input-group mb-4">
+                <label class="input-group-text" asp-for="EmailDoador"></label>
+                <input class="form-control" type="email" placeholder="Email" asp-for="EmailDoador">
+            </div>
+            <div class="input-group mb-4">
+                <label class="input-group-text" asp-for="DtDoacao"></label>
+                <input type="date" class="form-control"  asp-for="DtDoacao">
+            </div>
+            <div class="input-group mb-4">
+                <span class="input-group-text">$</span>
+                <input type="number" class="form-control" style="width:5rem" placeholder="Quantia da sua Doação" asp-for="Quantia">
+                <span class="input-group-text">.00</span>
+            </div>
+            <div style="style=" margin-bottom:0.4rem"">
+                <button type="submit" class="btn btn-lg btn-success">Doar</button>
+                <a class="btn btn-lg btn-danger" asp-action="Doar">Cancelar</a>
+            </div>
+        </div>
+        <div class="col-3">
+            <img style="width:300px" src="~/restaurante.png"/>
+        </div>
+
+    </div>
+
+
+
+</form>

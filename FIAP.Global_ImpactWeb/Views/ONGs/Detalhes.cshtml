@@ -6,10 +6,98 @@
 }
 
 
-<h3>Nome ONG: @Model.Nome</h3>
+<div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4"src="~/ong_1.png" alt="" width="72" height="72">
+    <h2>Aqui você pode vizualizar todos os Detalhes da ONG</h2>
+</div>
 
-<h3>Endereço: @Model.Endereco.CEP</h3>
+<div class="row">
+    <div class="col-md-4 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Doadores</span>
+            <span class="badge badge-secondary badge-pill">Quantidade : @ViewBag.qtdDoacao</span>
+        </h4>
+        @if (ViewBag.doacoes == null)
+        {
+            <span class="badge badge-danger">Nenhuma doação realizada no momento....</span>    
 
-<h3>CONTA BANCARIA: @Model.Conta.Agencia</h3>
+        }else {
 
-<h5>BANCO: @Model.Conta.NomeBanco</h5>
+            @foreach(var itens in ViewBag.doacoes)
+            {
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">Nome do Doador</h6>
+                            <small class="text-muted">Breve descrição</small>
+                        </div>
+                        <span class="text-muted">R$12</span>
+                    </li>
+                </ul>
+
+            }
+        }
+
+    </div>
+    <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Informações ONG</h4>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h4> Nome ONG: @Model.Nome</h4>
+
+                </div>
+                <span class="col-md-6 mb-3">
+                    @Model.Descricao
+                </span>
+                <div class="col-md-6 mb-3">
+                    <h4> Nome ONG: @Model.CNPJ</h4>
+
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <strong class="text-center text-success" >Endereços</strong>
+                <div class="input-group">
+                    
+                   <span class="input-group-text">Logradouro:  @Model.Endereco.Logradouro</span>
+                    
+                   <button class="form-control">@Model.Endereco.CEP</button>
+                    
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <input type="email" class="form-control" id="email" placeholder="fulano@exemplo.com">
+               
+            </div>
+
+            <div class="mb-3">
+                <strong class="text-center text-warning">Endereço</strong>
+                
+            </div>
+
+            <div class="mb-3">
+                <label for="endereco2">Endereço 2 <span class="text-muted">(Opcional)</span></label>
+                <input type="text" class="form-control" id="endereco2" placeholder="Apartamento ou casa">
+            </div>
+
+            <div class="row">
+                <div class="col-md-5 mb-3">
+                    <strong class="text-uppercase text-primary">Conta Bancária</strong>
+                    
+                    <select class="custom-select d-block w-100">
+                        <option >@Model.Conta.NomeBanco</option>
+                        
+                    </select>
+                    
+                </div>
+                <div class="col-md-4 mb-3">
+                    <span>Número da conta: @Model.Conta.NumeroConta</span>
+                    <span>Agência:  @Model.Conta.Agencia</span>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue o checkout</button>
+        
+    </div>
+ </div>

@@ -33,6 +33,8 @@ namespace FIAP.Global_ImpactWeb
 
             services.AddScoped<IONGRepository, ONGRepository>();
 
+            services.AddScoped<IDoacaoRepository, DoacaoRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

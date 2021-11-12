@@ -4,7 +4,6 @@
     ViewData["Title"] = "Listagem das ONG'S";
 }
 
-
 <div class="donate-background"></div>
 
 <mensage-sucess mensagem="@TempData["msg"]"></mensage-sucess>
@@ -29,30 +28,30 @@
 @foreach (var itens in Model)
 {
 
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col-md-6">
+            <div class="card">
+                <img src="~/img_home.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <strong class="d-inline-block mb-2 text-success">@itens.Nome</strong>
+                    <p class="card-text mb-auto font-weight-bold">Breve Descrição: @itens.Descricao</p>
+                    <span>Site Oficial: <a href="#"> @itens.LinkSite</a></span>
+                    <p class="text-black-50">Email: @itens.Email</p>
+                    <p class="badge badge-success"> + 200 Doações</p>
+                </div>
+                <div class="align-content-lg-stretch" style="margin-bottom:0.5rem;margin-left:5.5rem">
 
-
-<div class="row row-cols-1 row-cols-md-2 g-4">
-    <div class="col">
-        <div class="card">
-            <img src="~/img_home.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">@itens.Nome</h5>
-                <p class="card-text">@itens.Descricao</p>
-                <p> + 200 Doações</p>
-            </div>
-            <div class="align-content-lg-stretch" style="margin-bottom:0.5rem;margin-left:0.5rem">
-                <button  style="width:10rem" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Doar</button>
-                <a class="btn" asp-action="Detalhes" asp-route-id="@itens.CodigoId"  style="background-color: seagreen; width: 10rem">Detalhes</a>
-
+                    <!-- <button onclick="" style="width:10rem" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Doar</button>  -->
+                    <a class="btn" asp-action="Detalhes" asp-route-id="@itens.CodigoId" style="background-color: seagreen; width: 10rem">Detalhes</a>
+                    <a class="btn btn-primary" style="margin-left: 0.5rem; width: 10rem" asp-action="Doar" asp-controller="Doacao">Fazer Doação</a>
+                </div>
             </div>
         </div>
+
     </div>
-    
-</div>
 }
-    
 
-
+<!--
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -60,34 +59,37 @@
                 <span aria-hidden="true">&times;</span>
             </button>
             <div class="modal-body">
-                <div class="ong-colums">
-                    <div class="ong-modal-header">
-                        <h4>DOA FÁCIL</h4>
-                        <div>
-                            <a href="#">www.emily_thalita_enchem_o_saco.com.br</a>
+                <form asp-action="Doar">
+                    <div class="ong-colums">
+                        <div class="ong-modal-header">
+                            <h4>DOA FÁCIL</h4>
+                            <div>
+                                <a href="#">www.emily_thalita_enchem_o_saco.com.br</a>
+                            </div>
+                            <p>CNPJ</p>
                         </div>
-                        <p>CNPJ</p>
-                    </div>
 
-                    <div class="ong-modal-footer">
-                        <p class="ong-modal-description">
-                           
-                        </p>
-                        <div>
-                            <p class="bank-title">Banco do Bradesco</p>
-                            <div class="bank-data">
-                                <div>
-                                    <p>Agência</p>
-                                    <p>2334</p>
-                                </div>
-                                <div>
-                                    <p>Conta</p>
-                                    <p>2334-6</p>
+                        <div class="ong-modal-footer">
+                            <p class="ong-modal-description">
+
+                            </p>
+                            <div>
+                                <p class="bank-title">Banco do Bradesco</p>
+                                <div class="bank-data">
+                                    <div>
+                                        <p>Agência</p>
+                                        <p>2334</p>
+                                    </div>
+                                    <div>
+                                        <p>Conta</p>
+                                        <p>2334-6</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+
+                </form>
 
                 <div class="ong-colums">
                     <div>
@@ -116,9 +118,7 @@
                     </form>
                 </div>
             </div>
-            <!-- <div class="modal-footer">
-      <button type="button" class="btn btn-success">Save changes</button>
-    </div> -->
         </div>
     </div>
 </div>
+    -->

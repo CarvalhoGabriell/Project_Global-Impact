@@ -387,3 +387,5 @@ C:\Users\Gabriel\source\repos\FIAP.Global_ImpactWeb\FIAP.Global_ImpactWeb\obj\De
 C:\Users\Gabriel\source\repos\FIAP.Global_ImpactWeb\FIAP.Global_ImpactWeb\obj\Debug\netcoreapp3.1\Razor\Views\ONGs\Editar.cshtml.g.cs
 C:\Users\Gabriel\source\repos\FIAP.Global_ImpactWeb\FIAP.Global_ImpactWeb\obj\Debug\netcoreapp3.1\Razor\Views\ONGs\IndexAdmin.cshtml.g.cs
 C:\Users\Gabriel\source\repos\FIAP.Global_ImpactWeb\FIAP.Global_ImpactWeb\obj\Debug\netcoreapp3.1\Razor\Views\ONGs\Detalhes.cshtml.g.cs
+C:\Users\Gabriel\source\repos\FIAP.Global_ImpactWeb\FIAP.Global_ImpactWeb\obj\Debug\netcoreapp3.1\Razor\Views\ONGs\_Modal.cshtml.g.cs
+C:\Users\Gabriel\source\repos\FIAP.Global_ImpactWeb\FIAP.Global_ImpactWeb\obj\Debug\netcoreapp3.1\Razor\Views\Doacao\Doar.cshtml.g.cs
