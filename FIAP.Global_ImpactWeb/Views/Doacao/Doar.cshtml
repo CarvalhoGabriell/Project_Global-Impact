@@ -13,10 +13,10 @@
 
 <form asp-action="Doar">
 
-    <input hidden asp-for="CodigoId"/>
-
+    <input hidden asp-for="CodigoId" value="@ViewBag.ongs"/>
     <div class="row">
         <div class="col-9" >
+       
             <div class="input-group mb-4">
                 <span class="input-group-text" >Nome</span>
                 <input class="form-control" placeholder="Digite seu Nome..." asp-for="NomeDoador">
@@ -38,8 +38,8 @@
                 <input type="number" class="form-control" style="width:5rem" placeholder="Quantia da sua Doação" asp-for="Quantia">
                 <span class="input-group-text">.00</span>
             </div>
-            <div style="style=" margin-bottom:0.4rem"">
-                <button type="submit" class="btn btn-lg btn-success">Doar</button>
+            <div style=" margin-bottom:0.4rem">
+                <button type="submit" class="btn btn-lg btn-success" style="margin-right:1rem">Doar</button>
                 <a class="btn btn-lg btn-danger" asp-action="Doar">Cancelar</a>
             </div>
         </div>

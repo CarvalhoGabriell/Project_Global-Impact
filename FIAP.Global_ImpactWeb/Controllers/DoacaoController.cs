@@ -17,19 +17,11 @@ namespace FIAP.Global_ImpactWeb.Controllers
             _doacaoRepository = doacaoRepository;
         }
 
-        [HttpGet]
-        public IActionResult ModalCadastro()
-        {
-            var qtd = _doacaoRepository.Contar();
-            var obj = _doacaoRepository.Listar();
-            ViewBag.doacoes = obj;
-            ViewBag.qtdDoacao = qtd;
-            return View();
-        }
 
         [HttpGet]
-        public IActionResult Doar()
+        public IActionResult Doar(int id)
         {
+            ViewBag.ongs = id;
             return View();
         }
 

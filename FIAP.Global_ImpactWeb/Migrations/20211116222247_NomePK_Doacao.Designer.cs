@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FIAP.Global_ImpactWeb.Migrations
 {
     [DbContext(typeof(SolutionContext))]
-    [Migration("20211110014253_Doacao2")]
-    partial class Doacao2
+    [Migration("20211116222247_NomePK_Doacao")]
+    partial class NomePK_Doacao
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,12 +39,12 @@ namespace FIAP.Global_ImpactWeb.Migrations
 
                     b.HasKey("ContaId");
 
-                    b.ToTable("T_CONTA_BANCARIA");
+                    b.ToTable("T_CONTA_BANCARIAS");
                 });
 
             modelBuilder.Entity("FIAP.Global_ImpactWeb.Models.Doacao", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("DoacaoId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -68,12 +68,9 @@ namespace FIAP.Global_ImpactWeb.Migrations
                     b.Property<float>("Quantia")
                         .HasColumnType("real");
 
-                    b.Property<int?>("UserONGCodigoId")
-                        .HasColumnType("int");
+                    b.HasKey("DoacaoId");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserONGCodigoId");
+                    b.HasIndex("CodigoId");
 
                     b.ToTable("T_DOACAO");
                 });
@@ -86,8 +83,8 @@ namespace FIAP.Global_ImpactWeb.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CEP")
-                        .HasMaxLength(9)
-                        .HasColumnType("nvarchar(9)");
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
 
                     b.Property<string>("Logradouro")
                         .HasColumnType("nvarchar(max)");
@@ -136,16 +133,11 @@ namespace FIAP.Global_ImpactWeb.Migrations
                     b.Property<string>("Nome")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserONGCodigoId")
-                        .HasColumnType("int");
-
                     b.HasKey("CodigoId");
 
                     b.HasIndex("ContaId");
 
                     b.HasIndex("EnderecoId");
-
-                    b.HasIndex("UserONGCodigoId");
 
                     b.ToTable("T_ONG");
                 });
@@ -153,8 +145,8 @@ namespace FIAP.Global_ImpactWeb.Migrations
             modelBuilder.Entity("FIAP.Global_ImpactWeb.Models.Doacao", b =>
                 {
                     b.HasOne("FIAP.Global_ImpactWeb.Models.UserONG", "UserONG")
-                        .WithMany()
-                        .HasForeignKey("UserONGCodigoId");
+                        .WithMany("Doacoes")
+                        .HasForeignKey("CodigoId");
 
                     b.Navigation("UserONG");
                 });
@@ -173,10 +165,6 @@ namespace FIAP.Global_ImpactWeb.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FIAP.Global_ImpactWeb.Models.UserONG", null)
-                        .WithMany("ONGs")
-                        .HasForeignKey("UserONGCodigoId");
-
                     b.Navigation("Conta");
 
                     b.Navigation("Endereco");
@@ -184,7 +172,7 @@ namespace FIAP.Global_ImpactWeb.Migrations
 
             modelBuilder.Entity("FIAP.Global_ImpactWeb.Models.UserONG", b =>
                 {
-                    b.Navigation("ONGs");
+                    b.Navigation("Doacoes");
                 });
 #pragma warning restore 612, 618
         }

@@ -4,14 +4,16 @@ using FIAP.Global_ImpactWeb.Persistencia;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FIAP.Global_ImpactWeb.Migrations
 {
     [DbContext(typeof(SolutionContext))]
-    partial class SolutionContextModelSnapshot : ModelSnapshot
+    [Migration("20211116220911_AtualizandoFK")]
+    partial class AtualizandoFK
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,7 +44,7 @@ namespace FIAP.Global_ImpactWeb.Migrations
 
             modelBuilder.Entity("FIAP.Global_ImpactWeb.Models.Doacao", b =>
                 {
-                    b.Property<int>("DoacaoId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -66,7 +68,7 @@ namespace FIAP.Global_ImpactWeb.Migrations
                     b.Property<float>("Quantia")
                         .HasColumnType("real");
 
-                    b.HasKey("DoacaoId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CodigoId");
 
@@ -144,8 +146,7 @@ namespace FIAP.Global_ImpactWeb.Migrations
                 {
                     b.HasOne("FIAP.Global_ImpactWeb.Models.UserONG", "UserONG")
                         .WithMany("Doacoes")
-                        .HasForeignKey("CodigoId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CodigoId");
 
                     b.Navigation("UserONG");
                 });

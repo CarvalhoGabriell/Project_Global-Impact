@@ -5,7 +5,7 @@
 }
 
 <div class="registration-background"></div>
-<h4 class="registration-title">Cadastrar ONG</h4>
+<h4 class="registration-title">Cadastre aqui uma ONG !!</h4>
 
 
 <mensage-sucess mensagem="@TempData["msg"]"></mensage-sucess>
@@ -13,7 +13,12 @@
 <div class="form-container margin">
     <form asp-action="Cadastrar">
         <partial name="_Form" />
+            
+        <div style="display:flex;justify-content:space-between">
+            <button type="submit" class="btn btn-lg btn-success" style="margin-left:51rem" >Cadastrar</button>
+            <a class="btn btn-lg btn-secondary" asp-action="Cadastrar">Cancelar</a>
 
-        <button type="submit" class="btn btn-lg btn-success" style="margin-left:60rem;width:150px">Cadastrar</button>
+        </div>
+
     </form>
 </div>

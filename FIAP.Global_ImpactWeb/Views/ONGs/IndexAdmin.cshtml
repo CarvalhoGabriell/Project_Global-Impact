@@ -5,33 +5,34 @@
 }
 
 
-<div class="donate-background"></div>
+<div style="margin-bottom:2rem">
 
-<mensage-sucess mensagem="@TempData["msg"]"></mensage-sucess>
+    <mensage-sucess mensagem="@TempData["msg"]"></mensage-sucess>
+</div>
 
-<div class="search-input">
+<div class="search-input" style="margin-bottom:2rem;margin-top:3rem">
     <form>
-        <div class="mb-3 margin search-input-container">
-            <input type="text" class="form-control" placeholder="Pesquisar ONG..." name="nomeOng" id="nomeOng">
-
-            <input style="margin-left:1rem" type="submit" class="btn btn-primary" value="Pesquisar" />
-        </div>
-
         <div class="search-input-subtitle">
             <p>
                 Selecione alguma das ONGs registradas na nossa plataforma para
                 fazer a sua doação... ela pode salvar vidas
             </p>
         </div>
+        <div class="mb-3 margin search-input-container">
+            <input type="text" class="form-control" placeholder="Pesquisar ONG..." name="nomeOng" id="nomeOng">
+
+            <input style="margin-left: 1rem;background-color:purple" type="submit" class="btn" value="Pesquisar" />
+        </div>
+
     </form>
 </div>
 
+
+
 @if (Model.Count == 0)
 {
-   <mensage-sucess mensagem="Nenhuma ONG cadastrado atualmente" class="alert alert-warning"></mensage-sucess>
+   <mensage-sucess mensagem="Nenhuma ONG cadastrado atualmente" classe="alert alert-warning"></mensage-sucess>
 }
-
-
 <table style="border-radius:10px" class="table table-striped table-dark">
     <tr style="background-color:seagreen">
         <th>ID</th>

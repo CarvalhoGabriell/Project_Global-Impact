@@ -14,18 +14,19 @@ namespace FIAP.Global_ImpactWeb.Controllers
     {
         private IONGRepository _ongRepository;
 
-        //private IDoacaoRepository _doacaoRepository;
-
-        public ONGsController(IONGRepository ongRepository)
+        private IDoacaoRepository _doacaoRepository;
+        
+        public ONGsController(IONGRepository ongRepository, IDoacaoRepository doacaoRepository)
         {
             _ongRepository = ongRepository;
-            // _doacaoRepository = doacaoRepository;
+            _doacaoRepository = doacaoRepository;
         }
 
 
         [HttpGet]
         public IActionResult Index(string nomeBuscado)
         {
+
             var busca = _ongRepository.BuscarPor(str => str.Nome.Contains(nomeBuscado) || nomeBuscado == null);
             return View(busca);
         }
@@ -89,7 +90,10 @@ namespace FIAP.Global_ImpactWeb.Controllers
         public IActionResult Detalhes(int id)
         {
             var ongs = _ongRepository.BuscaPorId(id);
-
+            var doacao = _doacaoRepository.BuscarPor(f => f.CodigoId == id).ToList();
+            var totalDoacao = _doacaoRepository.Contar(f=>f.CodigoId == id);
+            ViewBag.total = totalDoacao;
+            ViewBag.doacoes = doacao;
             return View(ongs);
         }
 

@@ -33,7 +33,10 @@ namespace FIAP.Global_ImpactWeb.Repositories
 
         public IList<UserONG> BuscarPor(Expression<Func<UserONG, bool>> filtro)
         {
-            return _context.Users.Where(filtro).Include(f=>f.Endereco).Include(f=>f.Conta).ToList();
+            return _context.Users.Where(filtro)
+                .Include(f=>f.Endereco)
+                .Include(f=>f.Conta)
+                .ToList();
         }
 
         public void Cadastro(UserONG ong)

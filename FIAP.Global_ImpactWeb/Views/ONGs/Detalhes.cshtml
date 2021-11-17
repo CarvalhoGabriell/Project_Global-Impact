@@ -7,97 +7,106 @@
 
 
 <div class="py-5 text-center">
-    <img class="d-block mx-auto mb-4"src="~/ong_1.png" alt="" width="72" height="72">
-    <h2>Aqui você pode vizualizar todos os Detalhes da ONG</h2>
+    <img class="d-block mx-auto mb-6"src="~/ong_1.png" alt="" width="72" height="72">
+    <h2 style="color:seagreen">Aqui você pode vizualizar todos os Detalhes da ONG</h2>
 </div>
 
 <div class="row">
-    <div class="col-md-4 order-md-2 mb-4">
-        <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted">Doadores</span>
-            <span class="badge badge-secondary badge-pill">Quantidade : @ViewBag.qtdDoacao</span>
+    <div class="col-md-4 order-md-2 mb-4" style="border:ridge;border-width:2px;padding:5px;border-radius:5px; border-color:aquamarine">
+        <h4 class="d-flex justify-content-between align-items-center mb-3" style="padding:1rem">
+            <span class="text-muted">Quantidade Doações: </span>
+            <span class="badge badge-success badge-pill">@ViewBag.total</span>
         </h4>
         @if (ViewBag.doacoes == null)
         {
             <span class="badge badge-danger">Nenhuma doação realizada no momento....</span>    
 
-        }else {
+        }
 
             @foreach(var itens in ViewBag.doacoes)
             {
                 <ul class="list-group mb-3">
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
-                            <h6 class="my-0">Nome do Doador</h6>
-                            <small class="text-muted">Breve descrição</small>
+                            <h6 class="my-0">Contribuinte:  @itens.NomeDoador</h6>
+                            <small class="text-muted">CPF: @itens.CPF</small>
+                            <br />
+                            <small class="text-muted">@itens.EmailDoador</small>
                         </div>
-                        <span class="text-muted">R$12</span>
+                        <span class="text-success">R$ @itens.Quantia</span>
                     </li>
                 </ul>
 
             }
-        }
+        
 
     </div>
     <div class="col-md-8 order-md-1">
-            <h4 class="mb-3">Informações ONG</h4>
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <h4> Nome ONG: @Model.Nome</h4>
 
-                </div>
-                <span class="col-md-6 mb-3">
-                    @Model.Descricao
-                </span>
-                <div class="col-md-6 mb-3">
-                    <h4> Nome ONG: @Model.CNPJ</h4>
+        <h4 class="mb-3">Informações ONG</h4>
+        <div class="row g-3" style="margin-bottom:1rem">
+            <div class="col-sm-4">
+                <span>Nome: @Model.Nome</span>
+            </div>
+            <div class="col-sm-4">
+                <span>CNPJ: @Model.CNPJ</span>
+            </div>
+            <div class="col-sm-4">
+                <span>Email: @Model.Email</span>
+            </div>
+        </div>
 
-                </div>
+        <div class="row g-3">
+            <div class="col-12" style="border-color:aquamarine">
+                <span>Breve Descrição</span>
+                <textarea class="form-control" disabled cols="10" style="resize:none">@Model.Descricao</textarea>
             </div>
 
-            <div class="mb-3">
-                <strong class="text-center text-success" >Endereços</strong>
-                <div class="input-group">
-                    
-                   <span class="input-group-text">Logradouro:  @Model.Endereco.Logradouro</span>
-                    
-                   <button class="form-control">@Model.Endereco.CEP</button>
-                    
-                </div>
+        </div>
+
+        <div class="row g-3" style="margin-top:1rem">
+            <div class="col-sm-4">
+                <span >Visite Site Oficial: <a class="badge badge-info">@Model.LinkSite</a></span>
             </div>
 
-            <div class="mb-3">
-                <input type="email" class="form-control" id="email" placeholder="fulano@exemplo.com">
-               
-            </div>
+        </div>
 
-            <div class="mb-3">
-                <strong class="text-center text-warning">Endereço</strong>
-                
-            </div>
 
-            <div class="mb-3">
-                <label for="endereco2">Endereço 2 <span class="text-muted">(Opcional)</span></label>
-                <input type="text" class="form-control" id="endereco2" placeholder="Apartamento ou casa">
-            </div>
+        <div class="row" style="margin-top:2rem">
+            <div class="col-6">
 
-            <div class="row">
-                <div class="col-md-5 mb-3">
-                    <strong class="text-uppercase text-primary">Conta Bancária</strong>
-                    
-                    <select class="custom-select d-block w-100">
-                        <option >@Model.Conta.NomeBanco</option>
-                        
-                    </select>
-                    
-                </div>
-                <div class="col-md-4 mb-3">
-                    <span>Número da conta: @Model.Conta.NumeroConta</span>
-                    <span>Agência:  @Model.Conta.Agencia</span>
+                <div class="card mb-3" style="max-width:18rem;border-color:aquamarine">
+                    <strong class="text-uppercase text-success card-header">Endereços</strong>
+
+                    <div class="card-body">
+                        <h5 class="card-text">Endereço: @Model.Endereco.Logradouro</h5>
+                        <h5 class="card-text">CEP: @Model.Endereco.CEP</h5>
+                        <p class="card-text">Número: @Model.Endereco.Numero</p>
+                        <span class="badge badge-warning" style="width:6rem"> Estado: @Model.Endereco.Sigla</span>
+                    </div>
                 </div>
             </div>
-            <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue o checkout</button>
-        
+
+            <div class="col-6">
+
+                <div class="card mb-3" style="border-color:aquamarine">
+                    <strong class="text-uppercase text-success card-header">Conta Bancária</strong>
+                    <div class="card-body ">
+                        <h5 class="card-title">Utilize esses dados:</h5>
+                        <select class="custom-select d-block w-100" style="margin-bottom:1rem">
+                            <option>Banco: @Model.Conta.NomeBanco</option>
+                        </select>
+                        <p class="card-subtitle">CNPJ:  @Model.CNPJ</p>
+                        <p class="card-text">Número da conta: @Model.Conta.NumeroConta</p>
+                        <span class="card-text">Agência:  @Model.Conta.Agencia</span>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <button class="btn btn-primary btn-sm btn-block">Detalhes</button>
+        <hr class="mb-4">
+
     </div>
  </div>

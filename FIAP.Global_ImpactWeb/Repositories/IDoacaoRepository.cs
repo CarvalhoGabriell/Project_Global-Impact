@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace FIAP.Global_ImpactWeb.Repositories
@@ -11,8 +12,11 @@ namespace FIAP.Global_ImpactWeb.Repositories
         void Cadastrar(Doacao doacao);
 
         IList<Doacao> Listar();
+
+        IList<Doacao> BuscarPor(Expression<Func<Doacao, bool>>filtro);
+
         void SaveCommit();
 
-        int Contar();
+        int Contar(Expression<Func<Doacao, bool>> filtro);
     }
 }

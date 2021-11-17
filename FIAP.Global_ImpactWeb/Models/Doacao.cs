@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -12,7 +11,7 @@ namespace FIAP.Global_ImpactWeb.Models
     public class Doacao
     {
         [HiddenInput]
-        public int Id { get; set; }
+        public int DoacaoId { get; set; }
 
         [Display(Name ="Seu Nome Completo")]
         public string NomeDoador { get; set; }
@@ -29,9 +28,11 @@ namespace FIAP.Global_ImpactWeb.Models
         [Display(Name ="Data da Doação")]
         public DateTime DtDoacao { get; set; }
 
-        // relacionamento N:1
+        // relacionamento 1:N
+        public UserONG UserONG { get; set; }
+
+        [ForeignKey("UserONG")]
         public int? CodigoId { get; set; }
 
-        public UserONG UserONG { get; set; }
     }
 }

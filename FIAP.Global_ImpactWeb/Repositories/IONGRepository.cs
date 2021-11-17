@@ -21,6 +21,7 @@ namespace FIAP.Global_ImpactWeb.Repositories
 
         UserONG BuscaPorId(int id);
 
+
         IList<UserONG> BuscarPor(Expression<Func<UserONG, bool>> filtro);
     }
 }

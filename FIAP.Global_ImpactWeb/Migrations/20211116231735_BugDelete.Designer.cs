@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FIAP.Global_ImpactWeb.Migrations
 {
     [DbContext(typeof(SolutionContext))]
-    [Migration("20211106144134_Modelagem")]
-    partial class Modelagem
+    [Migration("20211116231735_BugDelete")]
+    partial class BugDelete
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,7 +39,40 @@ namespace FIAP.Global_ImpactWeb.Migrations
 
                     b.HasKey("ContaId");
 
-                    b.ToTable("T_CONTA_BANCARIA");
+                    b.ToTable("T_CONTA_BANCARIAS");
+                });
+
+            modelBuilder.Entity("FIAP.Global_ImpactWeb.Models.Doacao", b =>
+                {
+                    b.Property<int>("DoacaoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CPF")
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
+
+                    b.Property<int?>("CodigoId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DtDoacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EmailDoador")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NomeDoador")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("Quantia")
+                        .HasColumnType("real");
+
+                    b.HasKey("DoacaoId");
+
+                    b.HasIndex("CodigoId");
+
+                    b.ToTable("T_DOACAO");
                 });
 
             modelBuilder.Entity("FIAP.Global_ImpactWeb.Models.Endereco", b =>
@@ -49,8 +82,9 @@ namespace FIAP.Global_ImpactWeb.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Bairro")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("CEP")
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
 
                     b.Property<string>("Logradouro")
                         .HasColumnType("nvarchar(max)");
@@ -77,7 +111,7 @@ namespace FIAP.Global_ImpactWeb.Migrations
                         .HasMaxLength(14)
                         .HasColumnType("nvarchar(14)");
 
-                    b.Property<int?>("ContaId")
+                    b.Property<int>("ContaId")
                         .HasColumnType("int");
 
                     b.Property<string>("Descricao")
@@ -90,6 +124,9 @@ namespace FIAP.Global_ImpactWeb.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("EnderecoId")
+                        .HasColumnType("int");
+
                     b.Property<string>("LinkSite")
                         .HasColumnType("nvarchar(max)");
 
@@ -100,16 +137,43 @@ namespace FIAP.Global_ImpactWeb.Migrations
 
                     b.HasIndex("ContaId");
 
+                    b.HasIndex("EnderecoId");
+
                     b.ToTable("T_ONG");
+                });
+
+            modelBuilder.Entity("FIAP.Global_ImpactWeb.Models.Doacao", b =>
+                {
+                    b.HasOne("FIAP.Global_ImpactWeb.Models.UserONG", "UserONG")
+                        .WithMany("Doacoes")
+                        .HasForeignKey("CodigoId")
+                        .OnDelete(DeleteBehavior.ClientCascade);
+
+                    b.Navigation("UserONG");
                 });
 
             modelBuilder.Entity("FIAP.Global_ImpactWeb.Models.UserONG", b =>
                 {
                     b.HasOne("FIAP.Global_ImpactWeb.Models.ContaBancaria", "Conta")
                         .WithMany()
-                        .HasForeignKey("ContaId");
+                        .HasForeignKey("ContaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FIAP.Global_ImpactWeb.Models.Endereco", "Endereco")
+                        .WithMany()
+                        .HasForeignKey("EnderecoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Conta");
+
+                    b.Navigation("Endereco");
+                });
+
+            modelBuilder.Entity("FIAP.Global_ImpactWeb.Models.UserONG", b =>
+                {
+                    b.Navigation("Doacoes");
                 });
 #pragma warning restore 612, 618
         }

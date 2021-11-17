@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FIAP.Global_ImpactWeb.Models
 {
-    [Table("T_CONTA_BANCARIA")]
+    [Table("T_CONTA_BANCARIAS")]
     public class ContaBancaria
     {
         [HiddenInput, Key]
@@ -16,7 +16,7 @@ namespace FIAP.Global_ImpactWeb.Models
         [Display(Name ="Agência")]
         public int Agencia { get; set; }
 
-        [Display(Name = "Código do Banco")]
+        [Display(Name = "Nome do Banco")]
         public string NomeBanco { get; set; }
 
     }

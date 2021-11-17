@@ -44,6 +44,6 @@ namespace FIAP.Global_ImpactWeb.Models
         public int EnderecoId { get; set; }
 
         // relacionamento 1:N
-        public virtual ICollection<UserONG> ONGs { get; set; }
+        public virtual ICollection<Doacao> Doacoes { get; set; }
     }
 }
