@@ -26,7 +26,6 @@ namespace FIAP.Global_ImpactWeb.Controllers
         [HttpGet]
         public IActionResult Index(string nomeBuscado)
         {
-
             var busca = _ongRepository.BuscarPor(str => str.Nome.Contains(nomeBuscado) || nomeBuscado == null);
             return View(busca);
         }

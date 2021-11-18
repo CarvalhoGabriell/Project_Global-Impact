@@ -12,7 +12,7 @@
 <div class="search-input" style="margin-bottom:2rem;margin-top:3rem">
     <form>
         <div class="search-input-subtitle">
-            <p>
+            <p class="font-weight-bold">
                 Selecione alguma das ONGs registradas na nossa plataforma para
                 fazer a sua doação... ela pode salvar vidas
             </p>
@@ -36,14 +36,14 @@
 @foreach (var itens in Model)
 {
 
-    <div class="row row-cols-1 row-cols-md-2 g-4" style="display:flow">
-        <div class="col-md-6">
+    <div class="row row-cols-1 row-cols-md-2 g-4" style="display:ruby-base-container;flex-wrap:wrap;margin-left:1px">
+        <div class="col-md-6" style="margin-bottom:2rem">
             <div class="card">
                 <img src="~/img_home.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <strong class="d-inline-block mb-2 text-success">@itens.Nome</strong>
                     <p class="card-text mb-auto font-weight-bold">Breve Descrição: @itens.Descricao</p>
-                    <span>Site Oficial: <a href="#"> @itens.LinkSite</a></span>
+                    <span>Site Oficial: <a href="@itens.LinkSite"> Visite Aqui</a></span>
                     <p class="text-black-50">Email: @itens.Email</p>
                     <p class="badge badge-success"> + 200 Doações</p>
                 </div>

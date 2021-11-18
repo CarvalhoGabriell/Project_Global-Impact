@@ -31,7 +31,7 @@ namespace FIAP.Global_ImpactWeb.Controllers
             _doacaoRepository.Cadastrar(doacao);
             _doacaoRepository.SaveCommit();
             TempData["msg"] = "Doação Realizada com Sucesso";
-            return RedirectToAction("Doar");
+            return RedirectToAction("Index", "ONGs");
         }
     }
 }
